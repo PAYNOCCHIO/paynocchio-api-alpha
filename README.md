@@ -1,5 +1,5 @@
 <p align="center">
-<img style="align:center;" src="./resources/icon.png" alt="Paynocchio Logo" width="100" />
+<img style="align:center;" src="resources/icon.png" alt="Paynocchio Logo" width="100" />
 <h1 align="center">Paynocchio</h1>
 </p>
 
