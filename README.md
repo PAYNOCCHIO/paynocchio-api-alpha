@@ -13,6 +13,7 @@ API/
 resourses/                       # images
 README.md                        # overview
 LICENSE                          # public MIT license
+CHANGELOG.md                     # changelog
 ```
 
 ## Features
@@ -43,7 +44,7 @@ LICENSE                          # public MIT license
     ```
 
 ## Changelog
-See [CHANGELOG.md](https://github.com/PAYNOCCHIO/paynocchio-api-alpha) for details.
+See [CHANGELOG.md](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/CHANGELOG.md) for details.
 
 ## License
 MIT [license](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/LICENSE)
