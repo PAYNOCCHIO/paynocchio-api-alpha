@@ -7,6 +7,13 @@
 Paynocchio is ...
 
 ## Table of contents
+```
+API/
+├── api.md                       # api usage
+resourses/                       # images
+README.md                        # overview
+LICENSE                          # public MIT license
+```
 
 ## Features
 * **Feature 1** — description
