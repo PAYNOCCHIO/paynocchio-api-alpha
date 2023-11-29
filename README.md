@@ -1,17 +1,17 @@
 <p align="center">
-<img style="align:center;" src="resources/icon.png" alt="Paynocchio Logo" width="100" />
+<img style="align:center;" src="resources/logo.png" alt="Paynocchio Logo" width="100" />
 <h1 align="center">Paynocchio</h1>
 </p>
 
 **[Quickstart](#Quickstart)** |
 **[Documentation](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/tree/doc/readme-feature/API)** |
-**[Gitbook](https://app.gitbook.com/o/ArQ2grXRJpVKOAh6XOCh/s/HAYXLkumOApkGZ8KlDyG/)** |
+**[Site](https://paynocchio.com/)** |
 **[License](#License)** |
 **[Team](#Team)** |
 **[Getting help](#FAQ)** |
 
 ## Overview
-Paynocchio is ...
+PAYNOCCHIO is more than a typical payment processing service. We provide a comprehensive solution, operating as a ledger infrastructure. Our integrated services include roles as an issuing processor and program manager, along with offering closed-loop wallets. This enhances our extensive capabilities in payment processing.
 
 ## Table of contents
 ```
@@ -24,9 +24,10 @@ CHANGELOG.md                     # changelog
 ```
 
 ## Features
-* **Feature 1** — description
-* **Feature 2** — description
-* **Feature 3** — description
+* **Feature 1** — Create wallet
+* **Feature 2** — Withdraw
+* **Feature 3** — TopUp
+* **Feature 4** — Payment
 
 ## Quickstart
 
@@ -65,9 +66,9 @@ CHANGELOG.md                     # changelog
 ## FAQ
 
 - Q1
-    - Response1
+    - Answer 1
 - Q2
-    - Response2
+    - Answer 2
 
 ## Changelog
 See [CHANGELOG.md](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/CHANGELOG.md) for details.
@@ -76,11 +77,10 @@ See [CHANGELOG.md](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/
 MIT [license](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/LICENSE)
 
 ## Stay in touch
-[facebook](https://facebook.com)
-[gitbook](https://app.gitbook.com/o/ArQ2grXRJpVKOAh6XOCh/s/HAYXLkumOApkGZ8KlDyG/)
+[our site](https://paynocchio.com/team)
 
 ### Dev Meeting
 
 We have videoconference meetings `<every week>` where we discuss what we have been working on and get feedback from one another.
 
-[our mettings](https://meetings.com/all/)
+[our mettings]()
