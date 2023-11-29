@@ -219,7 +219,7 @@ response.json() == {
 <br>
 
 > <h1>GET</h1>
-> /wallet/<uuid>
+> /wallet/< uuid >
 
     To get wallet by id with balance
 
@@ -265,7 +265,7 @@ response.json() == {
 <br>
 
 > <h1>PATCH</h1>
-> /wallet/<uuid>/status/
+> /wallet/< uuid >/status/
 
     To change wallet status
 

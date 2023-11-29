@@ -1,5 +1,5 @@
 > <h1>GET</h1>
-> /wallet/<uuid>/orders/
+> /wallet/< uuid >/orders/
 
     Orders list
 
@@ -49,7 +49,7 @@ response.status_code == 200  # True
 <br>
 
 > <h1>GET</h1>
-> /wallet/<uuid>/orders/<uuid>
+> /wallet/< uuid >/orders/< uuid >
 
     Orders by id
 
