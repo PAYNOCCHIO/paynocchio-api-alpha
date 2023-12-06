@@ -1,5 +1,5 @@
 <p align="center">
-<img style="align:center;" src="resources/logo.png" alt="Paynocchio Logo" width="100" />
+<img style="align:center;" src="resources/logo.png" alt="Paynocchio Logo" width="100"/>
 <h1 align="center">Paynocchio</h1>
 </p>
 
@@ -31,25 +31,45 @@ CHANGELOG.md                     # changelog
 
 ## Quickstart
 
-- ### curl
-    ```
-    example
-    ```
+<h1 align="center">Without Environments</h1>
+<p align="center">
+<img style="align:center;" src="resources/create_api_key_steps/step_1.png" alt="Paynocchio Logo" width="600"/>
+</p>
 
-- ### python
-    ```
-    example
-    ```
+<h1 align="center">Create environment</h1>
+<p align="center">
+<img style="align:center;" src="resources/create_api_key_steps/step_2.png" alt="Paynocchio Logo" width="600"/>
+</p>
 
-- ### golang
-    ```
-    example
-    ```
+<h1 align="center">Environment list</h1>
+<p align="center">
+<img style="align:center;" src="resources/create_api_key_steps/step_3.png" alt="Paynocchio Logo" width="600"/>
+</p>
 
-- ### javascript
-    ```
-    example
-    ```
+<h1 align="center">Without key</h1>
+<p align="center">
+<img style="align:center;" src="resources/create_api_key_steps/step_4.png" alt="Paynocchio Logo" width="600"/>
+</p>
+
+<h1 align="center">Create new key</h1>
+<p align="center">
+<img style="align:center;" src="resources/create_api_key_steps/step_5.png" alt="Paynocchio Logo" width="600"/>
+</p>
+
+<h1 align="center">Environment with key</h1>
+<p align="center">
+<img style="align:center;" src="resources/create_api_key_steps/step_6.png" alt="Paynocchio Logo" width="600"/>
+</p>
+
+<h1 align="center">Environment actions list</h1>
+<p align="center">
+<img style="align:center;" src="resources/create_api_key_steps/step_7.png" alt="Paynocchio Logo" width="600"/>
+</p>
+
+<h1 align="center">Decrypted api key</h1>
+<p align="center">
+<img style="align:center;" src="resources/create_api_key_steps/step_8.png" alt="Paynocchio Logo" width="600"/>
+</p>
 
 ## Team
 
