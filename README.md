@@ -85,10 +85,10 @@ CHANGELOG.md                     # changelog
 
 ## FAQ
 
-- Q1
-    - Answer 1
-- Q2
-    - Answer 2
+- Where can I find information about the project
+    - [Answer 1](https://paynocchio.com/)
+- Where can I find the api documentation
+    - [Answer 2](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/doc/readme-feature/API/wallet.md)
 
 ## Changelog
 See [CHANGELOG.md](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/CHANGELOG.md) for details.
