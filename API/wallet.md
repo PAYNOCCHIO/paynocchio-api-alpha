@@ -278,7 +278,7 @@ response.json() == {
 - Response
     - Status code: 200 is OK
     - Status code: 401 
-        - "msg": "Signature is invalid"tokens
+        - "msg": "Signature is invalid tokens"
     - Status code: 422 
         - "msg": "env_id and user_id is required"
     - Body:
