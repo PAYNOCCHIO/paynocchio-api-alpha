@@ -78,6 +78,17 @@ CHANGELOG.md                     # changelog
 <img style="align:center;" src="resources/create_api_key_steps/step_8.png" alt="Paynocchio Logo" width="600"/>
 </p>
 
+### Get X-WALLET-SIGNATURE
+```python
+def calculate_sha256(api_key, env_id, user_id):
+    # Concatenate the decrypted API key, env_id, and user_id
+    data_to_hash = f"{api_key}|{env_id}|{user_id}"
+    # Calculate the SHA256 hash
+    sha256_hash = hashlib.sha256(str(data_to_hash).lower().encode()).hexdigest()
+ 
+    return sha256_hash
+```
+
 ## Team
 
 - __Abay Serkebayev__        | CEO / Founder
@@ -92,19 +103,25 @@ CHANGELOG.md                     # changelog
 
 ## FAQ
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 - Q1
     - Answer 1
 - Q2
     - Answer 2
 =======
+=======
+>>>>>>> ddb93493da0edab196fa931a2647bfa230b70ecf
 - Where can I find information about the project
     - [Answer 1](https://paynocchio.com/)
 - Where can I find the api documentation
     - [Answer 2](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/doc/readme-feature/API/wallet.md)
+<<<<<<< HEAD
 - How using test mode(Development environment)
     - We try hard every day for update our platform. Test mode(Development environment) will be realised soon.
 >>>>>>> Stashed changes
+=======
+>>>>>>> ddb93493da0edab196fa931a2647bfa230b70ecf
 
 ## Changelog
 See [CHANGELOG.md](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/CHANGELOG.md) for details.
@@ -119,6 +136,7 @@ MIT [License](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/LICEN
 
 We have videoconference meetings `<every week>` where we discuss what we have been working on and get feedback from one another.
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 [our mettings]()
 =======
@@ -140,3 +158,6 @@ We have videoconference meetings `<every week>` where we discuss what we have be
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/paynocchio
 >>>>>>> Stashed changes
+=======
+[our mettings]()
+>>>>>>> ddb93493da0edab196fa931a2647bfa230b70ecf
