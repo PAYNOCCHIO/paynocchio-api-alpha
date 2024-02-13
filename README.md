@@ -103,25 +103,13 @@ def calculate_sha256(api_key, env_id, user_id):
 
 ## FAQ
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-- Q1
-    - Answer 1
-- Q2
-    - Answer 2
-=======
-=======
->>>>>>> ddb93493da0edab196fa931a2647bfa230b70ecf
 - Where can I find information about the project
     - [Answer 1](https://paynocchio.com/)
 - Where can I find the api documentation
     - [Answer 2](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/doc/readme-feature/API/wallet.md)
-<<<<<<< HEAD
 - How using test mode(Development environment)
     - We try hard every day for update our platform. Test mode(Development environment) will be realised soon.
->>>>>>> Stashed changes
-=======
->>>>>>> ddb93493da0edab196fa931a2647bfa230b70ecf
+
 
 ## Changelog
 See [CHANGELOG.md](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/CHANGELOG.md) for details.
@@ -135,11 +123,6 @@ MIT [License](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/LICEN
 ### Dev Meeting
 
 We have videoconference meetings `<every week>` where we discuss what we have been working on and get feedback from one another.
-
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-[our mettings]()
-=======
 [Our mettings]()
 
 
@@ -154,10 +137,6 @@ We have videoconference meetings `<every week>` where we discuss what we have be
 [issues-shield]: https://img.shields.io/github/issues/PAYNOCCHIO/paynocchio-api-alpha.svg?style=for-the-badge
 [issues-url]: https://github.com/PAYNOCCHIO/paynocchio-api-alpha/issues
 [license-shield]: https://img.shields.io/github/license/PAYNOCCHIO/paynocchio-api-alpha.svg?style=for-the-badge
-[license-url]: https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/master/LICENSE.txt
+[license-url]: https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/paynocchio
->>>>>>> Stashed changes
-=======
-[our mettings]()
->>>>>>> ddb93493da0edab196fa931a2647bfa230b70ecf
