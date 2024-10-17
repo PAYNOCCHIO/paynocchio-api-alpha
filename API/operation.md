@@ -1,10 +1,15 @@
  ## Top Up Wallet
 
-### Description
 Tops up a user's wallet with a specified amount using a bank card.
+
+---
 
 ### Endpoint
 `POST /operation/topup`
+
+### Headers
+- **X-Wallet-Signature** (str): A SHA256 signature for authentication (ensure it's correct).
+- **X-Test-Mode-Switch** (str): A flag to enable or disable test mode (values: "on" or "off").
 
 ### Request Parameters
 - **environment_uuid** (UUID, required): The unique identifier of the environment where the operation is performed.
@@ -76,7 +81,7 @@ Example Response Body
 
 Response Fields
 
-- **(string)**: The unique identifier for the payment link.
+- **id** (string): The unique identifier for the payment link.
 - **currency** (string): The currency used for the transaction (e.g., "usd").
 - **metadata** (object): Contains additional details regarding the transaction:
   - **amount** (string): The amount added in the smallest currency unit (e.g., "10000" for $100.00).
@@ -98,11 +103,17 @@ Response Fields
 
 ## Payment from Wallet
 
-### Description
 Initiates a payment from a user's wallet for customer services.
+
+---
 
 ### Endpoint
 `POST /operation/payment`
+
+### Headers
+- **X-Wallet-Signature** (str): A SHA256 signature for authentication (ensure it's correct).
+- **X-Test-Mode-Switch** (str): A flag to enable or disable test mode (values: "on" or "off").
+
 
 ### Request Parameters
 - **environment_uuid** (UUID, required): The unique identifier of the environment where the payment is made.
@@ -154,241 +165,94 @@ Example Response Body
 - **type_interactions** (string): Describes the type of interaction (e.g., "success.interaction").
 - **interaction** (string): The payment provider used for the transaction (e.g., "stripe").
 
-<br>
+### Exceptions and Warnings
 
-> <h1>POST</h1>
-> /wallet/withdraw/
+**Warnings (200 OK but with message)**
 
-    To withdraw money from the wallet back to the user’s bank card
-    
-    Withdrawal operation should be activated at environment settings
-
-- Headers
-    - X-Wallet-Signature: str
-    - X-Test-Mode-Switch: on/off
-    - Content-Type: 'application/json'
-- Body
-    - environment_uuid: UUID Admin panel environment ID
-    - user_uuid: UUID External system user id
-    - wallet_uuid: UUID
-    - amount: float
-- Response
-    - Status code: 200 is OK
-    - Status code: 401 
-        - "msg": "Signature is invalid"tokens
-    - Status code: 422 
-        - "msg": "env_id and user_id is required"
-
-Example
-```python
-import request
-import json
-
-response = request.post(
-    f"{url}/wallet/withdraw/",
-    headers={
-        "X-Wallet-Signature": "secret_t1CdN9S8yicG5eWLUOfhcWaOscVnFXns",
+Insufficient main balance:
+```json
+{
+    "schemas": {
+        "is_error": false,
+        "message": "Insufficient main balance"
     },
-    json=json.dumps({
-        "env_id": 123,
-	    "user_id": 123,
-	    "wallet_id": 123,
-	    "amount": 123.12,
-    })
-)
-response.status_code == 200  # True
+    "type_interactions": "warning.interaction",
+    "interaction": "stripe"
+}
 ```
-<br>
 
-> <h1>POST</h1>
-> /wallet/
-
-    Create wallet for specified user with specified currency and type
-
-- Headers
-    - X-Wallet-Signature: str
-- Body
-    - env_id: UUID Admin panel environment ID
-    - user_id: UUID External system user id
-- Response
-    - Status code: 200 is OK
-    - Status code: 401 
-        - "msg": "Signature is invalid"tokens
-    - Status code: 422 
-        - "msg": "env_id and user_id is required"
-    - Body:
-        - wallet_id: UUID
-
-Example
-```python
-import request
-import json
-
-response = request.post(
-    f"{url}/wallet/",
-    headers={
-        "X-Wallet-Signature": "secret_t1CdN9S8yicG5eWLUOfhcWaOscVnFXns",
+Insufficient rewarding balance:
+```json
+{
+    "schemas": {
+        "is_error": false,
+        "message": "Insufficient rewarding balance"
     },
-    json=json.dumps({
-        "env_id": 123,
-	    "user_id": 123,
-    })
-)
-response.status_code == 200  # True
+    "type_interactions": "warning.interaction",
+    "interaction": "stripe"
+}
 ```
-<br>
 
-> <h1>GET</h1>
-> /wallet/
+## Withdraw from Wallet
 
-    To get list of wallets of the authorized user
+This API method allows users to withdraw funds from their wallet. It requires the environment, user, wallet details, the currency for the transaction, and the withdrawal amount.
 
-- Headers
-    - X-Wallet-Signature: str
-- Params
-    - env_id: UUID Admin panel environment ID
-    - user_id: UUID External system user id
-- Response
-    - Status code: 200 is OK
-    - Status code: 401 
-        - "msg": "Signature is invalid"tokens
-    - Status code: 422 
-        - "msg": "env_id and user_id is required"
-    - Body:
-        - wallets: list
-            - wallet.id: UUID
-            - wallet.user_id: UUID
-            - wallet.balance: double
-            - wallet.currency: str
-            - wallet.status: str
+---
 
-Example
-```python
-import request
-import json
+### Endpoint
+`POST /operation/withdraw`
 
-response = request.get(
-    f"{url}/wallet/",
-    headers={
-        "X-Wallet-Signature": "secret_t1CdN9S8yicG5eWLUOfhcWaOscVnFXns",
+### Headers
+- **X-Wallet-Signature** (str): A SHA256 signature for authentication (ensure it's correct).
+- **X-Test-Mode-Switch** (str): A flag to enable or disable test mode (values: "on" or "off").
+
+
+### Request Parameters
+- **environment_uuid** (UUID, required): The unique identifier of the environment where the transaction occurs.
+- **user_uuid** (UUID, required): The unique identifier of the user withdrawing funds.
+- **wallet_uuid** (UUID, required): The unique identifier of the user's wallet to withdraw from.
+- **currency** (string, required): The 3-letter ISO currency code for the transaction (e.g., `"USD"`).
+- **amount** (float, required): The amount to withdraw from the wallet. Must be a positive value.
+
+#### Example Request Body
+```json
+{
+    "environment_uuid": "a2860217-a6b2-4fb3-9a7b-32e123651e16",
+    "user_uuid": "a2820337-a6b2-4fb9-9a1b-32q217651e55",
+    "wallet_uuid": "5eea41d8-e459-4f41-91cd-763fe7708f8e",
+    "currency": "USD",
+    "amount": 100.0
+}
+```
+### Response
+**Example Successful Response (200 OK)**
+```json
+{
+    "schemas": {
+        "environment_uuid": "a2860217-a6b2-4fb3-9a7b-32e123651e16",
+        "user_uuid": "a2820337-a6b2-4fb9-9a1b-32q217651e55",
+        "wallet_uuid": "5eea41d8-e459-4f41-91cd-763fe7708f8e",
+        "type_operation": "withdraw",
+        "currency": "USD",
+        "amount": 100.0,
+        "x_forwarded_for": "192.168.1.1"
     },
-    params={
-        "env_id": 123,
-	    "user_id": 123,
-    }
-)
-response.json() == {
-    "wallets": [
-        {
-            id: "123456789",
-            user_id: "987654321",
-            balance: 1000.00,
-            currency: "USD", 
-			status: "active"
-        },
-        {
-            id: "123456789",
-            user_id: "987654321",
-            balance: 1000.00,
-            currency: "USD", 
-			status: "active"
-        },
-    ]
-}  # True
+    "type_interactions": "success.interaction",
+    "interaction": "stripe"
+}
 ```
-<br>
+#### Exceptions and Warnings
+**Warnings (200 OK but with message)**
 
-> <h1>GET</h1>
-> /wallet/< uuid >
-
-    To get wallet by id with balance
-
-- Headers
-    - X-Wallet-Signature: str
-- Params
-    - env_id: UUID Admin panel environment ID
-    - user_id: UUID External system user id
-    - wallet_id: UUID
-- Response
-    - Status code: 200 is OK
-    - Status code: 401 
-        - "msg": "Signature is invalid"tokens
-    - Status code: 422 
-        - "msg": "env_id and user_id is required"
-    - Body:
-        - env_id: UUID
-        - user_id: UUID
-        - balance: double
-        - currency: str
-
-Example
-```python
-import request
-import json
-
-response = request.get(
-    f"{url}/wallet/{123}/",
-    headers={
-        "X-Wallet-Signature": "secret_t1CdN9S8yicG5eWLUOfhcWaOscVnFXns",
+Insufficient main balance
+```json
+{
+    "schemas": {
+        "is_error": false,
+        "message": "Insufficient main balance"
     },
-    params={
-        "env_id": 123,
-	    "user_id": 123,
-    }
-)
-response.json() == {
-	"id": "123456789",
-	"balance": 1000.00,
-	"currency": "USD"
-}  # True
+    "type_interactions": "warning.interaction",
+    "interaction": "stripe"
+}
 ```
-<br>
 
-> <h1>PATCH</h1>
-> /wallet/< uuid >/status/
-
-    To change wallet status
-
-- Headers
-    - X-Wallet-Signature: str
-- Body
-    - env_id: UUID Admin panel environment ID
-    - user_id: UUID External system user id
-    - wallet_id: UUID
-- Response
-    - Status code: 200 is OK
-    - Status code: 401 
-        - "msg": "Signature is invalid"tokens
-    - Status code: 422 
-        - "msg": "env_id and user_id is required"
-    - Body:
-        - env_id: UUID
-        - user_id: UUID
-        - balance: double
-        - currency: UUID
-        - status: str
-
-Example
-```python
-import request
-import json
-
-response = request.patch(
-    f"{url}/wallet/{123}/status/",
-    headers={
-        "X-Wallet-Signature": "secret_t1CdN9S8yicG5eWLUOfhcWaOscVnFXns",
-    },
-    json=json.dumps({
-        "env_id": "123",
-        "user_id": "123",
-        "amount": 12.12
-    })
-)
-response.json() == {
-	"id": "123",
-	"balance": 12.12,
-	"currency": "USD",
-	"status": "active"
-}  # True
-```
-<br>
