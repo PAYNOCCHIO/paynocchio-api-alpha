@@ -58,7 +58,7 @@ When the wallet is successfully created, the response will return a dictionary w
 - `rewarding_balance` (`int`): The rewarding balance associated with the wallet.
 - `currency_uuid` (`str`): The unique identifier for the currency used in the wallet (UUID).
 
-### Example Response body
+#### Example Response body
 ```json
 {
     "uuid": "d559b7d7-c9fd-407e-8d72-f515f8231b1e",
@@ -156,7 +156,7 @@ A dictionary containing the updated details of the wallet with the following fie
 - `rewarding_balance` (`int`): The rewarding balance associated with the wallet.
 - `currency_uuid` (`str`): The unique identifier for the currency used in the wallet (UUID).
 
-### Example Response body
+#### Example Response body
 ```json
 {
     "uuid": "57b3809f-a80a-4fee-829a-35424213e943",
@@ -251,7 +251,7 @@ When retrieving the wallet group, the response will return a dictionary containi
     - `max_amount` (`int`): The maximum amount applicable under this rule.
     - `conversion_rate` (`float`): The conversion rate for the rewarding rule.
 
-### Example Response body
+#### Example Response body
 ```json
 {
     "uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
@@ -344,7 +344,7 @@ response = requests.request("GET", url, headers=headers, data=payload)
 - **size** (`int`): The number of records returned per page.
 - **pages** (`int`): The total number of pages available.
 
-### Example Response body
+#### Example Response body
 ```json
 {
     "item": [],
@@ -406,7 +406,7 @@ A dictionary containing the commission and bonus calculations with the following
   - `bonuses_amount` (`int`): The amount of bonuses earned from the operation.
   - `commission_amount` (`float`): The commission charged for the operation.
 
-### Example Response body
+#### Example Response body
 ```json
 {
     "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
@@ -483,7 +483,7 @@ A dictionary containing the following fields:
   - **rewarding_balance** (`int`): The rewarding balance amount associated with the wallet.
   - **currency_uuid** (`str`): The UUID of the currency used for the wallet.
 
-### Example Response body
+#### Example Response body
 ```json
 {
     "item": [
@@ -576,7 +576,7 @@ A dictionary containing the following fields:
   - **rewarding_balance** (`int`): The rewarding balance amount associated with the wallet.
   - **currency_uuid** (`str`): The UUID of the currency used for the wallet.
 
-### Example Response body
+#### Example Response body
 ```json
 {
     "item": [
@@ -666,7 +666,7 @@ A dictionary containing the following fields:
 - **rewarding_balance** (`int`): The current rewarding balance associated with the wallet.
 - **currency_uuid** (`str`): The UUID of the currency used for the wallet.
 
-### Example Response body
+#### Example Response body
 ```json
 {
     "uuid": "4b797111-9abf-4319-94f9-3687b03f8b1f",

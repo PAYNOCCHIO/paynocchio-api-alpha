@@ -1,6 +1,6 @@
 ## Get Order by UUID
 
-Retrieves detailed information about a specific order using its UUID. This method also includes user UUID and environment UUID in the request, as well as handles signature validation and test mode switching via headers.
+Retrieves detailed information about a specific order using its UUID. This method also includes user UUID and wallet group UUID in the request, as well as handles signature validation and test mode switching via headers.
 
 ---
 
@@ -8,24 +8,20 @@ Retrieves detailed information about a specific order using its UUID. This metho
 `GET /orders/{order_uuid}`
 
 ### Headers
-- **X-Wallet-Signature** (str): A SHA256 signature for authentication (ensure it's correct).
-- **X-Test-Mode-Switch** (str): A flag to enable or disable test mode (values: "on" or "off").
+- `X-Wallet-Signature` (str): A SHA256 signature for authentication (ensure it's correct).
+- `X-Test-Mode-Switch` (str): A flag to enable or disable test mode (values: "on" or "off").
 
 
 ### Request Parameters
-- **environment_uuid** (UUID, required): The unique identifier of the environment where the operation is performed.
-- **user_uuid** (UUID, required): The unique identifier of the user whose wallet will be credited.
+- `environment_uuid` (UUID, required): The unique identifier of the wallet group where the operation is performed.
+- `user_uuid` (UUID, required): The unique identifier of the user whose wallet will be credited.
 
-#### Example Request
-```
-https://wallet.stage.paynocchio.com/orders/287d5047-a999-458f-86b9-c29bdf8ed745?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6
-```
-Example code
+### Example code
 
 ```python
 import requests
 
-url = "https://wallet.stage.paynocchio.com/orders/287d5047-a999-458f-86b9-c29bdf8ed745?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6"
+url = "https://wallet.paynocchio.com/orders/287d5047-a999-458f-86b9-c29bdf8ed745?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6"
 
 payload = {}
 headers = {
@@ -59,23 +55,23 @@ Example Response Body
 
 ```
 
-Response Fields
+#### Response Fields
 
-dict: A dictionary containing the following fields:
-* **uuid** (str): Unique identifier of the order.
-* **wallet_uuid** (str): Unique identifier of the wallet linked to the order.
-* **external_user_id** (str): External identifier of the user.
-* **external_order_id** (str): External identifier of the order.
-* **request_uuid** (str): Identifier associated with the request.
-* **created_at** (datetime): Timestamp when the order was created.
-* **amount** (float): The order amount.
-* **status** (dict): A dictionary representing the status of the order, containing:
-* **uuid** (str): UUID of the status.
-* **updated_at** (datetime): Timestamp when the status was last updated.
-* **title** (str): Human-readable title for the status.
-* **code** (str): Code representing the status.
-* **bonus_amount** (float): Bonus amount applied to the order.
-* **full_amount** (float): Total amount including bonuses.
+**dict**: A dictionary containing the following fields:
+* `uuid` (str): Unique identifier of the order.
+* `wallet_uuid` (str): Unique identifier of the wallet linked to the order.
+* `external_user_id` (str): External identifier of the user.
+* `external_order_id` (str): External identifier of the order.
+* `request_uuid` (str): Identifier associated with the request.
+* `created_at` (datetime): Timestamp when the order was created.
+* `amount` (float): The order amount.
+* `status` (dict): A dictionary representing the status of the order, containing:
+* `uuid` (str): UUID of the status.
+* `updated_at` (datetime): Timestamp when the status was last updated.
+* `title` (str): Human-readable title for the status.
+* `code` (str): Code representing the status.
+* `bonus_amount` (float): Bonus amount applied to the order.
+* `full_amount` (float): Total amount including bonuses.
 
 
 ## Get All Orders by Wallet UUID
@@ -88,24 +84,20 @@ This section describes how to retrieve all orders associated with a specific wal
 `GET /orders/{order_uuid}`
 
 ### Headers
-- **X-Wallet-Signature** (str): A SHA256 signature for authentication (ensure it's correct).
-- **X-Test-Mode-Switch** (str): A flag to enable or disable test mode (values: "on" or "off").
+- `X-Wallet-Signature` (str): A SHA256 signature for authentication (ensure it's correct).
+- `X-Test-Mode-Switch` (str): A flag to enable or disable test mode (values: "on" or "off").
 
 
 ### Request Parameters
-- **environment_uuid** (UUID, required): The unique identifier of the environment where the operation is performed.
-- **user_uuid** (UUID, required): The unique identifier of the user whose wallet will be credited.
+- `environment_uuid` (UUID, required): The unique identifier of the wallet group where the operation is performed.
+- `user_uuid` (UUID, required): The unique identifier of the user whose wallet will be credited.
 
-#### Example Request
-```
-https://wallet.stage.paynocchio.com/orders/287d5047-a999-458f-86b9-c29bdf8ed745?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6
-```
-Example code
+### Example code
 
 ```python
 import requests
 
-url = "https://wallet.stage.paynocchio.com/orders/287d5047-a999-458f-86b9-c29bdf8ed745?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6"
+url = "https://wallet.paynocchio.com/orders/287d5047-a999-458f-86b9-c29bdf8ed745?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6"
 
 payload = {}
 headers = {
@@ -139,20 +131,20 @@ Example Response Body
 
 ```
 
-Response Fields
+#### Response Fields
 
-dict: A dictionary containing the following fields:
-* **uuid** (str): Unique identifier of the order.
-* **wallet_uuid** (str): Unique identifier of the wallet linked to the order.
-* **external_user_id** (str): External identifier of the user.
-* **external_order_id** (str): External identifier of the order.
-* **request_uuid** (str): Identifier associated with the request.
-* **created_at** (datetime): Timestamp when the order was created.
-* **amount** (float): The order amount.
-* **status** (dict): A dictionary representing the status of the order, containing:
-* **uuid** (str): UUID of the status.
-* **updated_at** (datetime): Timestamp when the status was last updated.
-* **title** (str): Human-readable title for the status.
-* **code** (str): Code representing the status.
-* **bonus_amount** (float): Bonus amount applied to the order.
-* **full_amount** (float): Total amount including bonuses.
+**dict**: A dictionary containing the following fields:
+* `uuid` (str): Unique identifier of the order.
+* `wallet_uuid` (str): Unique identifier of the wallet linked to the order.
+* `external_user_id` (str): External identifier of the user.
+* `external_order_id` (str): External identifier of the order.
+* `request_uuid` (str): Identifier associated with the request.
+* `created_at` (datetime): Timestamp when the order was created.
+* `amount` (float): The order amount.
+* `status` (dict): A dictionary representing the status of the order, containing:
+* `uuid` (str): UUID of the status.
+* `updated_at` (datetime): Timestamp when the status was last updated.
+* `title` (str): Human-readable title for the status.
+* `code` (str): Code representing the status.
+* `bonus_amount` (float): Bonus amount applied to the order.
+* `full_amount` (float): Total amount including bonuses.
