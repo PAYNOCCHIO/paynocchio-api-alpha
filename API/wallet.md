@@ -1,23 +1,21 @@
+## Create Wallet
 
-> <h1>POST</h1>
-> /wallet/
+Creates a wallet for a specified user with a given type.
 
-    Create wallet for specified user with specified environment
+This method allows for the creation of a wallet, linking it to a user in the external system
+    while specifying the environment in which the wallet will operate.
+---
 
-- Headers
-    - X-Wallet-Signature: str
-    - X-Test-Mode-Switch
-- Body
-    - environment_id: UUID Admin panel environment ID
-    - user_uuid: UUID External system user id
-- Response
-    - Status code: 200 is OK
-    - Status code: 401 
-        - "msg": "Signature is invalid"tokens
-    - Status code: 422 
-        - "msg": "env_id and user_id is required"
-    - Body:
-        - wallet_id: UUID
+### Endpoint
+`POST /wallet`
+
+### Headers
+- **X-Wallet-Signature** (str): A SHA256 signature for authentication (ensure it's correct).
+- **X-Test-Mode-Switch** (str): A flag to enable or disable test mode (values: "on" or "off").
+
+### Request Parameters
+- **environment_uuid** (UUID, required): The unique identifier of the environment where the operation is performed.
+- **user_uuid** (UUID, required): The unique identifier of the user whose wallet will be credited.
 
 ## Example Code
 ### Python
@@ -39,59 +37,30 @@ headers = {
 
 response = requests.request("POST", url, headers=headers, data=payload)
 ```
-### Javascript Fetch
-```ejs
-const myHeaders = new Headers();
-myHeaders.append("X-Wallet-Signature", "b75e0c98c7c05a46c3397666452863d89433388eb016a31d88e5117721885c34");
-myHeaders.append("X-Test-Mode-Switch", "on");
-myHeaders.append("Content-Type", "application/json");
 
-const raw = JSON.stringify({
-  "user_uuid": "b74efaf6-bd46-404f-b4e8-fd87fdf985a0",
-  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982"
-});
+### Response
+Example Response Body
+```json
+{
+    "uuid": "123e4567-e89b-12d3-a456-426614174000",
+    "wallet_uuid": "5eea41d8-e459-4f41-91cd-763fe7708f8e",
+    "external_user_id": "user123",
+    "external_order_id": "order456",
+    "request_uuid": "request789",
+    "created_at": "2024-10-17T12:34:56Z",
+    "amount": 100.50,
+    "status": {
+        "uuid": "status-uuid",
+        "updated_at": "2024-10-17T12:34:56Z",
+        "title": "Completed",
+        "code": "completed"
+    },
+    "bonus_amount": 10.00,
+    "full_amount": 110.50
+}
 
-const requestOptions = {
-  method: "POST",
-  headers: myHeaders,
-  body: raw,
-  redirect: "follow"
-};
-
-fetch("https://wallet.paynocchio.com/wallet", requestOptions)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error));
 ```
-### PHP cURL
-```php
-$curl = curl_init();
 
-curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://wallet.stage.paynocchio.com/wallet',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS =>'{
-"user_uuid": "b74efaf6-bd46-404f-b4e8-fd87fdf985a0",
-"environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982"
-}',
-  CURLOPT_HTTPHEADER => array(
-    'X-Wallet-Signature: {{wallet_signature}}',
-    'X-Test-Mode-Switch: on',
-    'Content-Type: application/json'
-  ),
-));
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-echo $response;
-```
 
 > <h1>GET</h1>
 > /wallet/
