@@ -69,6 +69,8 @@ def calculate_sha256(api_key, env_id, user_id):
     return sha256_hash
 ```
 
+## 🆕 Check our new [Python SDK](https://github.com/PAYNOCCHIO/paynocchio-sdk-python)
+
 ## Team
 
 - __Abay Serkebayev__        | CEO / Founder
