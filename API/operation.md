@@ -92,7 +92,7 @@ Response Fields
   - **interaction_method** (string): The method used for the transaction (e.g., "web").
   - payment_request_uuid** (UUID): A unique identifier for the payment request.
   - **stripe_product_id** (string): The Stripe product associated with the top-up.
-  - **type_operation** (string): The type of operation (e.g., "add money").
+  - **type_operation** (string): The type of operation (e.g., "payment_operation_add_money").
   - **user_uuid** (UUID): The unique identifier of the user initiating the top-up.
   - **wallet_uuid** (UUID): The unique identifier of the wallet being credited.
   - **x_forwarded_for** (string): The originating IP address.
