@@ -20,7 +20,7 @@ headers = {}
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const requestOptions = {
   method: "GET",
   redirect: "follow"
@@ -88,7 +88,7 @@ headers = {
 response = requests.request("POST", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 

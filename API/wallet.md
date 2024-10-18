@@ -38,7 +38,7 @@ headers = {
 response = requests.request("POST", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const myHeaders = new Headers();
 myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
 myHeaders.append("X-Test-Mode-Switch", "on");
@@ -154,7 +154,7 @@ headers = {
 response = requests.request("PATCH", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const myHeaders = new Headers();
 myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
 myHeaders.append("X-Test-Mode-Switch", "on");
@@ -273,7 +273,7 @@ headers = {
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const myHeaders = new Headers();
 myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
 myHeaders.append("X-Test-Mode-Switch", "on");
@@ -394,7 +394,7 @@ headers = {
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const myHeaders = new Headers();
 myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
 myHeaders.append("X-Test-Mode-Switch", "on");
@@ -482,7 +482,7 @@ headers = {
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const myHeaders = new Headers();
 myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
 myHeaders.append("X-Test-Mode-Switch", "on");
@@ -566,7 +566,7 @@ headers = {
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const myHeaders = new Headers();
 myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
 myHeaders.append("X-Test-Mode-Switch", "on");
@@ -679,7 +679,7 @@ headers = {
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const myHeaders = new Headers();
 myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
 myHeaders.append("X-Test-Mode-Switch", "on");
@@ -790,7 +790,7 @@ headers = {
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const myHeaders = new Headers();
 myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
 myHeaders.append("X-Test-Mode-Switch", "on");

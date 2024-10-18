@@ -22,7 +22,7 @@ headers = {
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
 Javascript
-```json
+```js
 const myHeaders = new Headers();
 myHeaders.append("accept", "application/json");
 
