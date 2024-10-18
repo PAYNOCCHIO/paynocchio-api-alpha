@@ -8,7 +8,7 @@ This method is used to check the health status of the database. It performs a si
 `GET /health`
 
 ### Example code
-
+Python
 ```python
 import requests
 
@@ -19,6 +19,19 @@ headers = {}
 
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const requestOptions = {
+  method: "GET",
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/health/", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
+
 
 ### Response
 Example Response Body
@@ -57,7 +70,7 @@ This method checks whether the provided API key and wallet group UUID are valid 
 }
 ```
 ### Example code
-
+Python
 ```python
 import requests
 import json
@@ -74,7 +87,28 @@ headers = {
 
 response = requests.request("POST", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
 
+const raw = JSON.stringify({
+  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
+  "secret_key": "367dcd6e-0ebf-42e6-8c20-3fcf529e694f"
+});
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/healthcheck/", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response
 Example Response Body
 ```json

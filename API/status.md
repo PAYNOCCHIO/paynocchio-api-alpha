@@ -8,7 +8,7 @@ This method fetches a list of status objects that represent the various states a
 `GET /status`
 
 ### Example code
-
+Python
 ```python
 import requests
 
@@ -21,7 +21,22 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("accept", "application/json");
 
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/status/", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response
 
 #### Example Response Body

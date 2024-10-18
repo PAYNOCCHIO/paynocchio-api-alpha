@@ -18,6 +18,7 @@ This method allows for the creation of a wallet, linking it to a user in the ext
 - `user_uuid` (UUID, required): The unique identifier of the user whose wallet will be credited.
 
 ### Example Code
+Python
 ```python
 import requests
 import json
@@ -36,7 +37,30 @@ headers = {
 
 response = requests.request("POST", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-Test-Mode-Switch", "on");
+myHeaders.append("Content-Type", "application/json");
 
+const raw = JSON.stringify({
+  "user_uuid": "450f6b66-f7d6-4f4b-a849-ddf3636778a6",
+  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982"
+});
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/wallet", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response Fields
 
 When the wallet is successfully created, the response will return a dictionary with the following fields:
@@ -108,6 +132,7 @@ This method allows you to suspend, activate, or block a wallet.
 _Note:_ Status codes could be obtained from `/status` route
 
 ### Example Code
+Python
 ```python
 import requests
 import json
@@ -128,7 +153,32 @@ headers = {
 
 response = requests.request("PATCH", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-Test-Mode-Switch", "on");
+myHeaders.append("Content-Type", "application/json");
 
+const raw = JSON.stringify({
+  "uuid": "57b3809f-a80a-4fee-829a-35424213e943",
+  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
+  "user_uuid": "450f6b66-f7d6-4f4b-a849-ddf3636778a6",
+  "status_uuid": "ef8da49e-a9e3-4726-8c26-f8d2bfd6a093"
+});
+
+const requestOptions = {
+  method: "PATCH",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/wallet/", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response Fields
 
 A dictionary containing the updated details of the wallet with the following fields:
@@ -208,6 +258,7 @@ This method provides detailed information about the wallet group, such as compan
 - `user_uuid` (UUID, required): The unique identifier of the user whose wallet will be credited.
 
 ### Example Code
+Python
 ```python
 import requests
 
@@ -221,7 +272,23 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-Test-Mode-Switch", "on");
 
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/wallet/environment-structure?user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6&environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response Fields
 
 When retrieving the wallet group, the response will return a dictionary containing the following fields:
@@ -312,6 +379,7 @@ This method allows users to fetch their wallet transaction records, with paginat
   - `end` (`datetime`, optional): The end date for filtering transactions (default is `None`).
 
 ### Example Code
+Python
 ```python
 import requests
 
@@ -325,7 +393,26 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-Test-Mode-Switch", "on");
 
+const raw = "";
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/wallet/transaction-history/?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6&wallet_uuid=57b3809f-a80a-4fee-829a-35424213e943&page=1&size=10", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response Fields
 
 - **item** (`list`): A list of transaction records, where each record contains:
@@ -380,6 +467,7 @@ This method retrieves the commission and bonus calculations for a given transact
   - `wallet_balance_check` (`bool`, optional): A flag to enable or disable the check of the user's wallet balances (default is `False`).
 
 ### Example Code
+Python
 ```python
 import requests
 
@@ -393,7 +481,23 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-Test-Mode-Switch", "on");
 
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/wallet/structure_calculation?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&amount=10&wallet_uuid=57b3809f-a80a-4fee-829a-35424213e943&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6&operation_type=payment_operation_add_money&wallet_balance_check=false", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response Fields
 A dictionary containing the commission and bonus calculations with the following fields:
 
@@ -447,6 +551,7 @@ This method fetches all wallets within the given wallet group, providing relevan
   - `page` (`int`, optional): The page number for pagination (default is `1`).
 
 ### Example Code
+Python
 ```python
 import requests
 
@@ -460,7 +565,26 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-Test-Mode-Switch", "on");
 
+const raw = "";
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/wallet/8c6b143d-df21-42ee-8a53-c7f19b274982/get_list?user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6&page=1&size=10", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response Fields
 A dictionary containing the following fields:
 
@@ -540,6 +664,7 @@ This method fetches all wallets that belong to the specified user within the pro
   - `status_code` (`str`, optional): The status code to filter wallets based on their current status.
 
 ### Example Code
+Python
 ```python
 import requests
 
@@ -553,7 +678,26 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-Test-Mode-Switch", "on");
 
+const raw = "";
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/wallet/8c6b143d-df21-42ee-8a53-c7f19b274982/get_wallet_from_uuid/450f6b66-f7d6-4f4b-a849-ddf3636778a6?page=1&size=50", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response Fields
 A dictionary containing the following fields:
 
@@ -631,6 +775,7 @@ This method fetches the wallet's details using its unique identifier, along with
   - `user_uuid` (`str`): The UUID of the external system user associated with the wallet.
 
 ### Example Code
+Python
 ```python
 import requests
 
@@ -643,6 +788,26 @@ headers = {
 }
 
 response = requests.request("GET", url, headers=headers, data=payload)
+```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-Test-Mode-Switch", "on");
+
+const raw = "";
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/wallet/57b3809f-a80a-4fee-829a-35424213e943?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
 ```
 
 ### Response Fields

@@ -17,7 +17,7 @@ Retrieves detailed information about a specific order using its UUID. This metho
 - `user_uuid` (UUID, required): The unique identifier of the user whose wallet will be credited.
 
 ### Example code
-
+Python
 ```python
 import requests
 
@@ -31,7 +31,23 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-TEST-MODE-SWITCH", "on");
 
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/orders/287d5047-a999-458f-86b9-c29bdf8ed745?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response
 Example Response Body
 ```json
@@ -93,7 +109,7 @@ This section describes how to retrieve all orders associated with a specific wal
 - `user_uuid` (UUID, required): The unique identifier of the user whose wallet will be credited.
 
 ### Example code
-
+Python
 ```python
 import requests
 
@@ -107,7 +123,23 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-TEST-MODE-SWITCH", "on");
 
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/orders?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&wallet_uuid=57b3809f-a80a-4fee-829a-35424213e943&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response
 Example Response Body
 ```json

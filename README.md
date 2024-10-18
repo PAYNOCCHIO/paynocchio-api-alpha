@@ -13,7 +13,7 @@
 ## Overview
 PAYNOCCHIO is more than a typical payment processing service. We provide a comprehensive solution, operating as a ledger infrastructure. Our integrated services include roles as an issuing processor and program manager, along with offering closed-loop wallets. This enhances our extensive capabilities in payment processing.
 
-Welcome to the **Wallet API**. Our API allows developers to integrate with our platform to manage wallets, transactions, and rewards seamlessly. Follow the steps below to register, configure environments, and start using the API.
+Welcome to the **Wallet API**. Our API allows developers to integrate with our platform to manage wallets, transactions, and rewards seamlessly. Follow the steps below to register, configure wallet groups, and start using the API.
 
 ## Getting Started
 
@@ -55,7 +55,7 @@ Please pay attention that you can use our API without KYC procedure. In this cas
 In most cases developers will see standard error codes like 200, 201, 401, 404. 
 We tried to make our API as user-friendly as possible so most of the responses are accompanied by descriptions.
 
-Testing our own API we figured out that most errors occur from sending incorrect data, when the production environment and the test environment are confused. So please be very attentive to headers.
+Testing our own API we figured out that most errors occur from sending incorrect data, when the production wallet group and the test wallet group are confused. So please be very attentive to headers.
 
 
 ### X-WALLET-SIGNATURE generation logic

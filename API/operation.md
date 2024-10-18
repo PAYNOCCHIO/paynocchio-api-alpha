@@ -29,7 +29,7 @@ Tops up a user's wallet with a specified amount using a bank card.
 }
 ```
 #### Example code
-
+Python
 ```python
 import requests
 import json
@@ -51,7 +51,33 @@ headers = {
 
 response = requests.request("POST", url, headers=headers, data=payload)
 ```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-TEST-MODE-SWITCH", "on");
+myHeaders.append("Content-Type", "application/json");
 
+const raw = JSON.stringify({
+  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
+  "user_uuid": "450f6b66-f7d6-4f4b-a849-ddf3636778a6",
+  "wallet_uuid": "57b3809f-a80a-4fee-829a-35424213e943",
+  "amount": 100,
+  "redirect_url": "https://moodle.local"
+});
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/operation/topup", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response
 Example Response Body
 ```json
@@ -136,7 +162,60 @@ Initiates a payment from a user's wallet for customer services.
     "bonus_amount": 10
 }
 ```
+#### Example code
+Python
+```python
+import requests
+import json
 
+url = "https://wallet.paynocchio.com/operation/payment"
+
+payload = json.dumps({
+  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
+  "user_uuid": "450f6b66-f7d6-4f4b-a849-ddf3636778a6",
+  "wallet_uuid": "57b3809f-a80a-4fee-829a-35424213e943",
+  "external_order_id": "606589a2-190a-4b5e-ac9a-aef7d989dbbc",
+  "amount": 10,
+  "full_amount": 10,
+  "bonus_amount": 0
+})
+headers = {
+  'X-Wallet-Signature': 'd549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5',
+  'X-TEST-MODE-SWITCH': 'on',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-TEST-MODE-SWITCH", "on");
+myHeaders.append("Content-Type", "application/json");
+
+const raw = JSON.stringify({
+  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
+  "user_uuid": "450f6b66-f7d6-4f4b-a849-ddf3636778a6",
+  "wallet_uuid": "57b3809f-a80a-4fee-829a-35424213e943",
+  "external_order_id": "606589a2-190a-4b5e-ac9a-aef7d989dbbc",
+  "amount": 10,
+  "full_amount": 10,
+  "bonus_amount": 0
+});
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/operation/payment", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
 ### Response
 Example Response Body
 ```json
@@ -223,6 +302,56 @@ This API method allows users to withdraw funds from their wallet. It requires th
     "currency": "USD",
     "amount": 100.0
 }
+```
+#### Example code
+Python
+```python
+import requests
+import json
+
+url = "https://wallet.paynocchio.com/operation/withdraw"
+
+payload = json.dumps({
+  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
+  "user_uuid": "450f6b66-f7d6-4f4b-a849-ddf3636778a6",
+  "currency": "USD",
+  "amount": 20,
+  "wallet_uuid": "57b3809f-a80a-4fee-829a-35424213e943"
+})
+headers = {
+  'X-Wallet-Signature': 'd549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5',
+  'X-Test-Mode-Switch': 'on',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+```
+Javascript
+```json
+const myHeaders = new Headers();
+myHeaders.append("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5");
+myHeaders.append("X-Test-Mode-Switch", "on");
+myHeaders.append("Content-Type", "application/json");
+
+const raw = JSON.stringify({
+  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
+  "user_uuid": "450f6b66-f7d6-4f4b-a849-ddf3636778a6",
+  "currency": "USD",
+  "amount": 20,
+  "wallet_uuid": "57b3809f-a80a-4fee-829a-35424213e943"
+});
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://wallet.paynocchio.com/operation/withdraw", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
 ```
 ### Response
 `Example Successful Response (200 OK)`
