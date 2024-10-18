@@ -8,6 +8,15 @@ This method is used to check the health status of the database. It performs a si
 `GET /health`
 
 ### Example code
+cURL
+```curl
+curl --location --request GET 'https://wallet.paynocchio.com/health/' \
+--header 'Content-Type: application/json' \
+--data '{
+  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
+  "secret_key": "367dcd6e-0ebf-42e6-8c20-3fcf529e694f"
+}'
+```
 Python
 ```python
 import requests
@@ -18,6 +27,19 @@ payload = {}
 headers = {}
 
 response = requests.request("GET", url, headers=headers, data=payload)
+```
+Java
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n  \"environment_uuid\": \"8c6b143d-df21-42ee-8a53-c7f19b274982\",\n  \"secret_key\": \"367dcd6e-0ebf-42e6-8c20-3fcf529e694f\"\n}");
+Request request = new Request.Builder()
+  .url("https://wallet.paynocchio.com/health/")
+  .method("GET", body)
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
 ```
 Javascript
 ```js
@@ -70,6 +92,15 @@ This method checks whether the provided API key and wallet group UUID are valid 
 }
 ```
 ### Example code
+cURL
+```curl
+curl --location 'https://wallet.paynocchio.com/healthcheck/' \
+--header 'Content-Type: application/json' \
+--data '{
+  "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",
+  "secret_key": "367dcd6e-0ebf-42e6-8c20-3fcf529e694f"
+}'
+```
 Python
 ```python
 import requests
@@ -86,6 +117,19 @@ headers = {
 }
 
 response = requests.request("POST", url, headers=headers, data=payload)
+```
+Java
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n  \"environment_uuid\": \"8c6b143d-df21-42ee-8a53-c7f19b274982\",\n  \"secret_key\": \"367dcd6e-0ebf-42e6-8c20-3fcf529e694f\"\n}");
+Request request = new Request.Builder()
+  .url("https://wallet.paynocchio.com/healthcheck/")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
 ```
 Javascript
 ```js

@@ -29,6 +29,20 @@ Tops up a user's wallet with a specified amount using a bank card.
 }
 ```
 #### Example code
+cURL
+```curl
+curl --location 'https://wallet.paynocchio.com/operation/topup' \
+--header 'X-Wallet-Signature: d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5' \
+--header 'X-TEST-MODE-SWITCH: on' \
+--header 'Content-Type: application/json' \
+--data '{  
+    "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",  
+    "user_uuid": "450f6b66-f7d6-4f4b-a849-ddf3636778a6",  
+    "wallet_uuid": "57b3809f-a80a-4fee-829a-35424213e943",
+    "amount": 100,  
+    "redirect_url": "https://moodle.local"
+}'
+```
 Python
 ```python
 import requests
@@ -50,6 +64,21 @@ headers = {
 }
 
 response = requests.request("POST", url, headers=headers, data=payload)
+```
+Java
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{  \r\n    \"environment_uuid\": \"8c6b143d-df21-42ee-8a53-c7f19b274982\",  \r\n    \"user_uuid\": \"450f6b66-f7d6-4f4b-a849-ddf3636778a6\",  \r\n    \"wallet_uuid\": \"57b3809f-a80a-4fee-829a-35424213e943\",\r\n    \"amount\": 100,  \r\n    \"redirect_url\": \"https://moodle.local\"\r\n}");
+Request request = new Request.Builder()
+  .url("https://wallet.paynocchio.com/operation/topup")
+  .method("POST", body)
+  .addHeader("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5")
+  .addHeader("X-TEST-MODE-SWITCH", "on")
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
 ```
 Javascript
 ```js
@@ -163,6 +192,22 @@ Initiates a payment from a user's wallet for customer services.
 }
 ```
 #### Example code
+cURL
+```curl
+curl --location 'https://wallet.paynocchio.com/operation/payment' \
+--header 'X-Wallet-Signature: d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5' \
+--header 'X-TEST-MODE-SWITCH: on' \
+--header 'Content-Type: application/json' \
+--data '{  
+    "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",  
+    "user_uuid": "450f6b66-f7d6-4f4b-a849-ddf3636778a6",  
+    "wallet_uuid": "57b3809f-a80a-4fee-829a-35424213e943",
+    "external_order_id": "606589a2-190a-4b5e-ac9a-aef7d989dbbc",
+    "amount": 10,  
+    "full_amount": 10,
+    "bonus_amount": 0
+}'
+```
 Python
 ```python
 import requests
@@ -186,6 +231,21 @@ headers = {
 }
 
 response = requests.request("POST", url, headers=headers, data=payload)
+```
+Java
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{  \r\n    \"environment_uuid\": \"8c6b143d-df21-42ee-8a53-c7f19b274982\",  \r\n    \"user_uuid\": \"450f6b66-f7d6-4f4b-a849-ddf3636778a6\",  \r\n    \"wallet_uuid\": \"57b3809f-a80a-4fee-829a-35424213e943\",\r\n    \"external_order_id\": \"606589a2-190a-4b5e-ac9a-aef7d989dbbc\",\r\n    \"amount\": 10,  \r\n    \"full_amount\": 10,\r\n    \"bonus_amount\": 0\r\n}");
+Request request = new Request.Builder()
+  .url("https://wallet.paynocchio.com/operation/payment")
+  .method("POST", body)
+  .addHeader("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5")
+  .addHeader("X-TEST-MODE-SWITCH", "on")
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
 ```
 Javascript
 ```js
@@ -304,6 +364,20 @@ This API method allows users to withdraw funds from their wallet. It requires th
 }
 ```
 #### Example code
+cURL
+```curl
+curl --location 'https://wallet.paynocchio.com/operation/withdraw' \
+--header 'X-Wallet-Signature: d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5' \
+--header 'X-Test-Mode-Switch: on' \
+--header 'Content-Type: application/json' \
+--data '{  
+    "environment_uuid": "8c6b143d-df21-42ee-8a53-c7f19b274982",  
+    "user_uuid": "450f6b66-f7d6-4f4b-a849-ddf3636778a6",  
+    "currency": "USD",  
+    "amount": 20,  
+    "wallet_uuid": "57b3809f-a80a-4fee-829a-35424213e943"
+}'
+```
 Python
 ```python
 import requests
@@ -325,6 +399,21 @@ headers = {
 }
 
 response = requests.request("POST", url, headers=headers, data=payload)
+```
+Java
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{  \r\n    \"environment_uuid\": \"8c6b143d-df21-42ee-8a53-c7f19b274982\",  \r\n    \"user_uuid\": \"450f6b66-f7d6-4f4b-a849-ddf3636778a6\",  \r\n    \"currency\": \"USD\",  \r\n    \"amount\": 20,  \r\n    \"wallet_uuid\": \"57b3809f-a80a-4fee-829a-35424213e943\"\r\n}");
+Request request = new Request.Builder()
+  .url("https://wallet.paynocchio.com/operation/withdraw")
+  .method("POST", body)
+  .addHeader("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5")
+  .addHeader("X-Test-Mode-Switch", "on")
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
 ```
 Javascript
 ```js
@@ -372,6 +461,18 @@ fetch("https://wallet.paynocchio.com/operation/withdraw", requestOptions)
 ```
 #### Exceptions and Warnings
 `Warnings (200 OK but with message)`
+
+Daily transaction limit exceeded
+```json
+{
+    "schemas": {
+        "is_error": false,
+        "message": "Daily transaction limit exceeded"
+    },
+    "type_interactions": "warning.interaction",
+    "interaction": "stripe"
+}
+```
 
 Insufficient main balance
 ```json

@@ -17,6 +17,12 @@ Retrieves detailed information about a specific order using its UUID. This metho
 - `user_uuid` (UUID, required): The unique identifier of the user whose wallet will be credited.
 
 ### Example code
+cURL
+```curl
+curl --location 'https://wallet.paynocchio.com/orders/287d5047-a999-458f-86b9-c29bdf8ed745?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6' \
+--header 'X-Wallet-Signature: d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5' \
+--header 'X-TEST-MODE-SWITCH: on'
+```
 Python
 ```python
 import requests
@@ -30,6 +36,20 @@ headers = {
 }
 
 response = requests.request("GET", url, headers=headers, data=payload)
+```
+Java
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("https://wallet.paynocchio.com/orders/287d5047-a999-458f-86b9-c29bdf8ed745?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6")
+  .method("GET", body)
+  .addHeader("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5")
+  .addHeader("X-TEST-MODE-SWITCH", "on")
+  .build();
+Response response = client.newCall(request).execute();
 ```
 Javascript
 ```js
@@ -109,6 +129,12 @@ This section describes how to retrieve all orders associated with a specific wal
 - `user_uuid` (UUID, required): The unique identifier of the user whose wallet will be credited.
 
 ### Example code
+cURL
+```curl
+curl --location 'https://wallet.paynocchio.com/orders?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&wallet_uuid=57b3809f-a80a-4fee-829a-35424213e943&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6' \
+--header 'X-Wallet-Signature: d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5' \
+--header 'X-TEST-MODE-SWITCH: on'
+```
 Python
 ```python
 import requests
@@ -122,6 +148,20 @@ headers = {
 }
 
 response = requests.request("GET", url, headers=headers, data=payload)
+```
+Java
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("https://wallet.paynocchio.com/orders?environment_uuid=8c6b143d-df21-42ee-8a53-c7f19b274982&wallet_uuid=57b3809f-a80a-4fee-829a-35424213e943&user_uuid=450f6b66-f7d6-4f4b-a849-ddf3636778a6")
+  .method("GET", body)
+  .addHeader("X-Wallet-Signature", "d549194d0f718d2e07029939b0265fe9f5045d5a3b812ec95c5f7b84544155f5")
+  .addHeader("X-TEST-MODE-SWITCH", "on")
+  .build();
+Response response = client.newCall(request).execute();
 ```
 Javascript
 ```js
